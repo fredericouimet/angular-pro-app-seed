@@ -9,14 +9,18 @@ import { User } from './auth-form/auth-form.interface';
   template: `
     <div>
       <ng-container
-        [ngTemplateOutlet]="tmpl">
+        [ngTemplateOutlet]="tmpl"
+        [ngTemplateOutletContext]="ctx">
       </ng-container>
-      <template #tmpl>
-        Todd Motto : England, UK
+      <template #tmpl let-name let-location="location">
+        {{ name }} : {{ location }}
       </template>
     </div>
   `
 })
 export class AppComponent {
-
+  ctx = {
+    $implicit: 'Todd Motto',
+    location: 'England, UK'
+  };
 }
